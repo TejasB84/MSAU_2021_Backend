@@ -2,6 +2,8 @@ package com.example.candidatemgmt.respository;
 
 import com.example.candidatemgmt.bean.EduDetails;
 import com.example.candidatemgmt.bean.EduDetailsRowMapper;
+import com.example.candidatemgmt.bean.Trends4;
+import com.example.candidatemgmt.bean.Trends4RowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -70,6 +72,10 @@ public class EduDetailsRespository {
 
     public Integer deleteEdudetailsById(Integer id){
         return jdbcTemplate.update("delete from edudetails where id = ?",id);
+    }
+    public List<Trends4> getcountPerUniversity()
+    {
+        return  jdbcTemplate.query("select universityname , count(id) from edudetails group by universityname",new Trends4RowMapper());
     }
 }
 

@@ -2,6 +2,7 @@ package com.example.candidatemgmt.controller;
 
 import com.example.candidatemgmt.bean.EduDetails;
 import com.example.candidatemgmt.bean.OnBoardingDetails;
+import com.example.candidatemgmt.bean.Trends1;
 import com.example.candidatemgmt.respository.EduDetailsRespository;
 import com.example.candidatemgmt.respository.OnBoardingDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;

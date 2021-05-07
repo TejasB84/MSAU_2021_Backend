@@ -2,10 +2,7 @@ package com.example.candidatemgmt.respository;
 
 //import com.example.candidatemgmt.bean.User;
 //import com.example.candidatemgmt.bean.UserRowMapper;
-import com.example.candidatemgmt.bean.JoiningDetails;
-import com.example.candidatemgmt.bean.JoiningDetailsRowMapper;
-import com.example.candidatemgmt.bean.Ternds1RowMapper;
-import com.example.candidatemgmt.bean.Trends1;
+import com.example.candidatemgmt.bean.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -77,6 +74,15 @@ public class JoiningDetailsRepository {
     public List<Trends1> getCountPerYear()
     {
         return  jdbcTemplate.query("select date , count(id) from joiningdetails group by date",new Ternds1RowMapper());
+    }
+
+    public List<trends2> getCountPerLoaction()
+    {
+        return  jdbcTemplate.query("select location , count(id) from joiningdetails group by location",new Trends2RowMapper());
+    }
+    public List<Trends3> getCountPerTechnology()
+    {
+        return  jdbcTemplate.query("select technology , count(id) from joiningdetails group by technology",new Trends3RowMapper());
     }
 }
 

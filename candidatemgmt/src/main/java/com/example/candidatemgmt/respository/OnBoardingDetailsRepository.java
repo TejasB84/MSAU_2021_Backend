@@ -1,7 +1,6 @@
 package com.example.candidatemgmt.respository;
 
-import com.example.candidatemgmt.bean.OnBoardingDetails;
-import com.example.candidatemgmt.bean.OnboardDetailsRowMapper;
+import com.example.candidatemgmt.bean.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -71,5 +70,7 @@ public class OnBoardingDetailsRepository {
     public Integer deleteOnboarddetailsById(Integer id){
         return jdbcTemplate.update("delete from onboardingdetails where id = ?",id);
     }
+
+
 }
 

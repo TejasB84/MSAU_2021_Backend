@@ -1,6 +1,7 @@
 package com.example.candidatemgmt.controller;
 
 import com.example.candidatemgmt.bean.EduDetails;
+import com.example.candidatemgmt.bean.Trends4;
 import com.example.candidatemgmt.respository.EduDetailsRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -73,4 +74,10 @@ public class EduDetailsController {
         eduDetailsRespository.deleteEdudetailsById(id);
         return new ResponseEntity<EduDetails>(HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/trends4")
+    public List<Trends4> getcountPerUniversity()
+    {
+        return eduDetailsRespository.getcountPerUniversity();
+    }
+
 }

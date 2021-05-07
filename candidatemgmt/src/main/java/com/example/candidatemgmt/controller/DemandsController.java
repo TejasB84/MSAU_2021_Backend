@@ -1,7 +1,6 @@
 package com.example.candidatemgmt.controller;
 
-import com.example.candidatemgmt.bean.Demands;
-import com.example.candidatemgmt.bean.OnBoardingDetails;
+import com.example.candidatemgmt.bean.*;
 import com.example.candidatemgmt.respository.DemandsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +28,7 @@ public class DemandsController {
     }
 
     @GetMapping()
-    public List<OnBoardingDetails> getAllDemandsdetails()
+    public List<Demands> getAllDemandsdetails()
     {
         log.info("Get request received for all demands");
         return demandsRepository.getDemandsdetails();
@@ -45,35 +44,42 @@ public class DemandsController {
         }
         return new ResponseEntity<Demands>( demands, HttpStatus.OK);
     }
-    @PostMapping
-    public ResponseEntity<String> createDemandsdetails(@RequestBody Demands demands) throws SQLIntegrityConstraintViolationException {
-        log.info("Post request received to create a new demand");
-        if (demandsRepository.findById(demands.getDid()) != null) {
-            return new ResponseEntity<String>("Duplicate Entry "+ demands.getDid(), HttpStatus.IM_USED);
-        }
-        demandsRepository.saveDemandsdetails(demands);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
-    @PutMapping
-    public ResponseEntity<?> updateOnboarddetails(@RequestBody Demands demands) {
-        if (demandsRepository.findById(demands.getDid()) == null) {
-            return new ResponseEntity<String>("Unable to update as  User id " + demands.getDid() + " not found.",
-                    HttpStatus.NOT_FOUND);
-        }
+//    @PostMapping
+//    public ResponseEntity<String> createDemandsdetails(@RequestBody Demands demands) throws SQLIntegrityConstraintViolationException {
+//        log.info("Post request received to create a new demand");
+//        if (demandsRepository.findById(demands.getDid()) != null) {
+//            return new ResponseEntity<String>("Duplicate Entry "+ demands.getDid(), HttpStatus.IM_USED);
+//        }
+//        demandsRepository.saveDemandsdetails(demands);
+//        return ResponseEntity.status(HttpStatus.CREATED).build();
+//    }
+//    @PutMapping
+//    public ResponseEntity<?> updateOnboarddetails(@RequestBody Demands demands) {
+//        if (demandsRepository.findById(demands.getDid()) == null) {
+//            return new ResponseEntity<String>("Unable to update as  User id " + demands.getDid() + " not found.",
+//                    HttpStatus.NOT_FOUND);
+//        }
+//
+//        demandsRepository.updateDemandsdetails(demands);
+//        return new ResponseEntity<Demands>(demands, HttpStatus.OK);
+//    }
 
-        demandsRepository.updateDemandsdetails(demands);
-        return new ResponseEntity<Demands>(demands, HttpStatus.OK);
-    }
 
 
+//    @DeleteMapping(value = "/{id}")
+//    public ResponseEntity<?> deleteOnboarddetails(@PathVariable("id") Integer id) {
+//        Demands demands =demandsRepository.findById(id);
+//        if (demands == null) {
+//            return new ResponseEntity<String>("Unable to delete as  User id " + id + " not found.", HttpStatus.NOT_FOUND);
+//        }
+//        demandsRepository.deleteDemandsdetailsById(id);
+//        return new ResponseEntity<Demands>(HttpStatus.NO_CONTENT);
+//    }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<?> deleteOnboarddetails(@PathVariable("id") Integer id) {
-        Demands demands =demandsRepository.findById(id);
-        if (demands == null) {
-            return new ResponseEntity<String>("Unable to delete as  User id " + id + " not found.", HttpStatus.NOT_FOUND);
-        }
-        demandsRepository.deleteDemandsdetailsById(id);
-        return new ResponseEntity<Demands>(HttpStatus.NO_CONTENT);
-    }
+//    @GetMapping("/trends2")
+//    public List<trends2> getCountPerYear()
+//    {
+//        return demandsRepository.getCountPerYear();
+//    }
+
 }

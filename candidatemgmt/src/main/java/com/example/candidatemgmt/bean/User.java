@@ -1,5 +1,6 @@
 package com.example.candidatemgmt.bean;
 //import java.io.Serializable;
+
 public class User {
     int id;
     String firstname;
@@ -9,7 +10,7 @@ public class User {
     String birthdate;
     String city;
     String country;
-
+    int did;
     public String getBirthdate() {
         return birthdate;
     }
@@ -22,12 +23,21 @@ public class User {
         return id;
     }
 
-    public void setId(int id) {
+    public User setId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getFirstname() {
         return firstname;
+    }
+
+    public int getDid() {
+        return did;
+    }
+
+    public void setDid(int did) {
+        this.did = did;
     }
 
     public void setFirstname(String firstname) {

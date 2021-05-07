@@ -45,6 +45,15 @@ public class Demands {
         this.location = location;
     }
 
+    public String getSkills() {
+        return skills;
+    }
+
+    public void setSkills(String skills) {
+        this.skills = skills;
+    }
+
     String mname;
     String location;
+    String skills;
 }

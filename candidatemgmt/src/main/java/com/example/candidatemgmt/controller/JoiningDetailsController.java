@@ -3,6 +3,8 @@ package com.example.candidatemgmt.controller;
 //import com.example.candidatemgmt.bean.User;
 import com.example.candidatemgmt.bean.JoiningDetails;
 import com.example.candidatemgmt.bean.Trends1;
+import com.example.candidatemgmt.bean.Trends3;
+import com.example.candidatemgmt.bean.trends2;
 import com.example.candidatemgmt.respository.JoiningDetailsRepository;
 import com.example.candidatemgmt.respository.UserRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,5 +81,17 @@ public class JoiningDetailsController {
     public List<Trends1> getCountPerYear()
     {
         return joiningDetailsRepository.getCountPerYear();
+    }
+
+    @GetMapping("/trends2")
+    public List<trends2> getCountPerLocation()
+    {
+        return joiningDetailsRepository.getCountPerLoaction();
+    }
+
+    @GetMapping("/trends3")
+    public List<Trends3> getCountPerTechnology()
+    {
+        return joiningDetailsRepository.getCountPerTechnology();
     }
 }

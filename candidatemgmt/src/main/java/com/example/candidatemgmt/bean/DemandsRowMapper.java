@@ -15,6 +15,7 @@ public class DemandsRowMapper implements RowMapper {
         demands.setDept(resultSet.getString("dept"));
         demands.setMname(resultSet.getString("mname"));
         demands.setLocation(resultSet.getString("location"));
+        demands.setSkills(resultSet.getString("skills"));
 
         return demands;
     }

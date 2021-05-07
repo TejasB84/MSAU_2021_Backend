@@ -39,7 +39,7 @@ public class UserRespository {
     }
 
     public Boolean saveUser(User user){
-        String query="insert into user values(?,?,?,?,?,?,?,?)";
+        String query="insert into user values(?,?,?,?,?,?,?,?,?)";
         return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){
             @Override
             public Boolean doInPreparedStatement(PreparedStatement ps)
@@ -53,7 +53,7 @@ public class UserRespository {
                 ps.setString(6,user.getBirthdate());
                 ps.setString(7,user.getCity());
                 ps.setString(8,user.getCountry());
-
+                ps.setInt(9,user.getDid());
 
                 return ps.execute();
 

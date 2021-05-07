@@ -1,9 +1,6 @@
 package com.example.candidatemgmt.respository;
 
-import com.example.candidatemgmt.bean.Demands;
-import com.example.candidatemgmt.bean.DemandsRowMapper;
-import com.example.candidatemgmt.bean.OnBoardingDetails;
-import com.example.candidatemgmt.bean.OnboardDetailsRowMapper;
+import com.example.candidatemgmt.bean.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -24,7 +21,7 @@ public class DemandsRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public List<OnBoardingDetails> getDemandsdetails(){
+    public List<Demands> getDemandsdetails(){
         return  jdbcTemplate.query("select * from demands",new DemandsRowMapper());
     }
 
@@ -41,39 +38,43 @@ public class DemandsRepository {
 
     }
 
-    public Boolean saveDemandsdetails(Demands demands){
-        String query="insert into demands values(?,?,?,?,?)";
-        return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){
-            @Override
-            public Boolean doInPreparedStatement(PreparedStatement ps)
-                    throws SQLException, DataAccessException {
+//    public Boolean saveDemandsdetails(Demands demands){
+//        String query="insert into demands values(?,?,?,?,?)";
+//        return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){
+//            @Override
+//            public Boolean doInPreparedStatement(PreparedStatement ps)
+//                    throws SQLException, DataAccessException {
+//
+//                ps.setInt(1,demands.getDid());
+//                ps.setString(2,demands.getRole());
+//                ps.setString(3,demands.getDept());
+//                ps.setString(4,demands.getMname());
+//                ps.setString(5,demands.getLocation());
+//
+//
+//
+//                return ps.execute();
+//
+//            }
+//        });
+//    }
+//
+//    public Integer updateDemandsdetails(Demands demands){
+//        String query="update demands set role = ? , dept = ? , mname = ? , location = ? where did = ?";
+//        Object[] params = {demands.getRole(),demands.getDept(),demands.getMname(),demands.getLocation(),demands.getDid()};
+//        int[] types = {Types.VARCHAR, Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.INTEGER};
+//
+//        return jdbcTemplate.update(query, params, types);
+//    }
+//
+//    public Integer deleteDemandsdetailsById(Integer id){
+//        return jdbcTemplate.update("delete from demands where did = ?",id);
+//    }
 
-                ps.setInt(1,demands.getDid());
-                ps.setString(2,demands.getRole());
-                ps.setString(3,demands.getDept());
-                ps.setString(4,demands.getMname());
-                ps.setString(5,demands.getLocation());
-
-
-
-                return ps.execute();
-
-            }
-        });
-    }
-
-    public Integer updateDemandsdetails(Demands demands){
-        String query="update demands set role = ? , dept = ? , mname = ? , location = ? where did = ?";
-        Object[] params = {demands.getRole(),demands.getDept(),demands.getMname(),demands.getLocation(),demands.getDid()};
-        int[] types = {Types.VARCHAR, Types.VARCHAR,Types.VARCHAR,Types.VARCHAR,Types.INTEGER};
-
-        return jdbcTemplate.update(query, params, types);
-    }
-
-    public Integer deleteDemandsdetailsById(Integer id){
-        return jdbcTemplate.update("delete from demands where did = ?",id);
-    }
-
+//    public List<trends2> getCountPerYear()
+//    {
+//        return  jdbcTemplate.query("select skills , count(did) from demands group by skills",new Trends2RowMapper());
+//    }
 
 }
 
